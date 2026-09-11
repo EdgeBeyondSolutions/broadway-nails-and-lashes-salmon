@@ -237,20 +237,6 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---- Fondo de video fijo (todas las páginas) — se pausa si el usuario pide menos movimiento ---- */
-  function initSiteVideoBg() {
-    var video = $(".site-video-bg video");
-    if (!video) return;
-    if (reduced) {
-      video.removeAttribute("autoplay");
-      video.pause();
-      return;
-    }
-    video.muted = true;
-    var playPromise = video.play();
-    if (playPromise && playPromise.catch) playPromise.catch(function () {});
-  }
-
   /* ---- Formulario de contacto: envío real por Formspree, tarjeta de éxito, luego el formulario reaparece vacío ---- */
   function initContactForm() {
     var form = $("[data-contact-form]");
@@ -316,7 +302,6 @@
     safe(initGalleryFilter, "initGalleryFilter");
     safe(initServicesFilter, "initServicesFilter");
     safe(initHeaderState, "initHeaderState");
-    safe(initSiteVideoBg, "initSiteVideoBg");
     safe(initContactForm, "initContactForm");
     document.documentElement.classList.add("is-ready");
   }
